@@ -1,11 +1,8 @@
-// Import the Backbone module and its dependencies
-const Backbone = require('backbone');
+import AppView from './js/view/appView';
+import './css/style.css';
 
-// Import our view
-const AppView = require('./js/appView');
-require('./css/style.css')
-// Execute after the DOM has loaded
-Backbone.$(function () {
-    // Create an instance of our view
-    new AppView();
-});
+$(() => {
+    Backbone.$(function () {
+        new AppView();
+    });
+})
