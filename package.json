@@ -35,11 +35,13 @@
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "html-webpack-plugin": "^5.5.0",
+    "javascript-obfuscator": "^4.0.0",
     "mini-css-extract-plugin": "^2.7.2",
     "system-bell-webpack-plugin": "^1.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-dev-server": "^4.11.1",
     "webpack-manifest-plugin": "^5.0.0",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "webpack-obfuscator": "^3.5.1"
   }
 }

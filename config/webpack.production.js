@@ -5,12 +5,11 @@ const WebpackObfuscator = require('webpack-obfuscator');
 module.exports = {
     mode: 'production',
     output: {
-        filename: '[name].[hash].js'
+        filename: '[name].[hash].js',
+        clean: true
     },
     optimization: {
         minimizer: [
-            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-            // `...`,
             new CssMinimizerPlugin(),
         ],
     },
@@ -35,4 +34,8 @@ module.exports = {
         }),
         new WebpackObfuscator({rotateStringArray: true, reservedStrings: [ '\s*' ]}, [])
     ],
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
 };

@@ -1,4 +1,5 @@
 @import 'normalize.css';
+@import 'components/item.css';
 
 body {
     background: #c1c1c1;
