@@ -10,6 +10,12 @@ module.exports = {
     output: {
         path: path.join(__dirname, '..', 'public')
     },
+    resolve: {
+        alias: {
+            js: path.resolve('src/js/'),
+        },
+        extensions: ['', '.js'],
+    },
     module: {
         rules: [
             {

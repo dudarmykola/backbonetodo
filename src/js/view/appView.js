@@ -1,5 +1,5 @@
-import TodoItem from '../model/todoItem';
-import TodoItems from '../collection/todoItems';
+import TodoItem from 'js/model/todoItem';
+import TodoItems from 'js/collection/todoItems';
 import TodoItemsView from './todoItemsView';
 
 const viewOptions = {
