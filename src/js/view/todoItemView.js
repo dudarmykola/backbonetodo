@@ -10,7 +10,14 @@ export default Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.html(this.model.escape('description'));
+        const checkbox = $('<input>',
+            { type:'checkbox'}
+        )
+
+        this.$el
+            .append($('<label>', { class: 'label' })
+                .html(`<span class="title">${this.model.escape('description')}</span>`)
+                .prepend(checkbox));
 
         return this;
     }
