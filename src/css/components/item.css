@@ -43,3 +43,7 @@
     flex-direction: row;
     justify-content: flex-start;
 }
+
+.label.checked {
+    text-decoration: line-through;
+}
