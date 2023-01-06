@@ -1,30 +1,32 @@
-import TodoItem from 'js/model/todoItem';
+import Form from 'js/model/form';
 import TodoItems from 'js/collection/todoItems';
 import TodoItemsView from './todoItemsView';
+import FormView from './formView';
 
 const viewOptions = {
     el: '#root',
 
-    initialize: function () {
+    initialize: function (options) {
+        this.globalEvents = options.globalEvents;
+
         this.render();
     },
 
     render: function () {
-        const todoItems = new TodoItems([
-            new TodoItem({
-                description: 'Todo 1'
-            }),
-            new TodoItem({
-                description: 'Todo 2'
-            }),
-            new TodoItem({
-                description: 'Todo 3'
-            })
-        ]);
+        const todoItems = new TodoItems();
+        const formModel = new Form();
+        const todoItemsView = new TodoItemsView({
+            model: todoItems,
+            globalEvents: this.globalEvents
+        });
+        const formView = new FormView({
+            model: formModel,
+            globalEvents: this.globalEvents
+        });
 
-        const todoItemsView = new TodoItemsView({model: todoItems});
-
-        this.$el.html(todoItemsView.render().$el);
+        this.$el.append($('<div>', {
+            class: 'todo__wrapper'
+        }).append(formView.render().$el).append(todoItemsView.render().$el));
     }
 };
 
