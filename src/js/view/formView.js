@@ -13,8 +13,6 @@ export default Backbone.View.extend({
     },
 
     render: function() {
-        const self = this;
-
         this.$el.append(
             $('<input>',
                 { type:'text',
