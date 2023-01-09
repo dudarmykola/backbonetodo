@@ -12,13 +12,18 @@ export default Backbone.View.extend({
     },
 
     events: {
-        'change #check': 'onCheckboxChange'
+        'change #check': 'onCheckboxChange',
+        'click #delete': 'onClickDelete'
     },
 
     onCheckboxChange: function(e) {
         e.preventDefault();
 
         this.model.toggle();
+    },
+
+    onClickDelete: function() {
+        this.model.destroy();
     },
 
     render: function() {
@@ -28,13 +33,22 @@ export default Backbone.View.extend({
                 type:'checkbox',
                 id: 'check',
                 checked: !!checked
-            }
-        )
+            });
+        const deleteButton = $('<button>',
+            {
+                class: 'delete',
+                id: 'delete',
+                text: 'Delete'
+            });
+
+        this.$el.attr('id', this.model.cid);
 
         this.$el.html('')
             .append($('<label>', { class: `label ${checked}` })
                 .html(`<span class="title">${this.model.escape('description')}</span>`)
-                .prepend(checkbox));
+                .prepend(checkbox)
+                .append(deleteButton)
+            );
 
         return this;
     }
