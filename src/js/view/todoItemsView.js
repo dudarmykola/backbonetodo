@@ -12,6 +12,20 @@ export default Backbone.View.extend({
 
         this.globalEvents = options.globalEvents;
         this.globalEvents.on('todo:add', this.onAddTodoItem, this);
+        this.model.on('remove', this.onDeleteTodoItem, this);
+    },
+
+    onAddTodoItem: function(todoItem) {
+        const newTodoItemView = new TodoItemView({
+                model: todoItem
+            });
+
+        this.model.add(todoItem);
+        this.$el.append(newTodoItemView.render().$el);
+    },
+
+    onDeleteTodoItem: function(model) {
+        this.$('#' + model.cid).remove();
     },
 
     render: function() {
@@ -24,11 +38,5 @@ export default Backbone.View.extend({
         })
 
         return this;
-    },
-
-    onAddTodoItem: function(todoItem) {
-        const newTodoItemView = new TodoItemView({model: todoItem});
-
-        this.$el.append(newTodoItemView.render().$el);
     }
 });
