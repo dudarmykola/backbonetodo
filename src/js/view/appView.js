@@ -15,6 +15,9 @@ const viewOptions = {
     render: function () {
         const todoItems = new TodoItems();
         const formModel = new Form();
+
+        todoItems.fetch();
+
         const todoItemsView = new TodoItemsView({
             model: todoItems,
             globalEvents: this.globalEvents

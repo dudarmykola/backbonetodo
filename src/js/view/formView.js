@@ -26,7 +26,8 @@ export default Backbone.View.extend({
 
         this.$el.append(
             $('<input>',
-                { type:'submit',
+                {
+                    type:'submit',
                     value:'Add'
                 }
             )
@@ -43,7 +44,7 @@ export default Backbone.View.extend({
 
         if (inputValue) {
             this.globalEvents.trigger('todo:add', new TodoItem({
-                description: inputValue
+                title: inputValue
             }));
 
             input.val('');
