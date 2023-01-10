@@ -20,6 +20,7 @@ export default Backbone.View.extend({
         e.preventDefault();
 
         this.model.toggle();
+        this.model.save();
     },
 
     onClickDelete: function() {
@@ -27,7 +28,7 @@ export default Backbone.View.extend({
     },
 
     render: function() {
-        const checked = this.model.get('isCompleted') ? 'checked' : '';
+        const checked = this.model.get('completed') ? 'checked' : '';
         const checkbox = $('<input>',
             {
                 type:'checkbox',
@@ -45,7 +46,7 @@ export default Backbone.View.extend({
 
         this.$el.html('')
             .append($('<label>', { class: `label ${checked}` })
-                .html(`<span class="title">${this.model.escape('description')}</span>`)
+                .html(`<span class="title">${this.model.escape('title')}</span>`)
                 .prepend(checkbox)
                 .append(deleteButton)
             );
