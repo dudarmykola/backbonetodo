@@ -1,0 +1,10 @@
+<label class="label <%= checked %>">
+    <input type="checkbox"
+           name="check"
+           id="check"
+    <% if (checked) { %>
+            checked
+    <% } %> />
+    <span class="title"><%= title %></span>
+    <button class="delete" id="delete">Delete</button>
+</label>
