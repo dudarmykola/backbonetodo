@@ -1,4 +1,9 @@
+import _ from 'underscore';
+import tpl from '../../template/todoItem.html';
+
 export default Backbone.View.extend({
+    template: _.template(tpl),
+
     tagName: 'li',
 
     className: 'todo__list__item',
@@ -29,27 +34,15 @@ export default Backbone.View.extend({
 
     render: function() {
         const checked = this.model.get('completed') ? 'checked' : '';
-        const checkbox = $('<input>',
-            {
-                type:'checkbox',
-                id: 'check',
-                checked: !!checked
-            });
-        const deleteButton = $('<button>',
-            {
-                class: 'delete',
-                id: 'delete',
-                text: 'Delete'
-            });
 
         this.$el.attr('id', this.model.cid);
 
-        this.$el.html('')
-            .append($('<label>', { class: `label ${checked}` })
-                .html(`<span class="title">${this.model.escape('title')}</span>`)
-                .prepend(checkbox)
-                .append(deleteButton)
-            );
+        const templateSettings = this.template({
+            checked: checked,
+            title: this.model.get('title')
+        });
+
+        this.$el.html(templateSettings);
 
         return this;
     }

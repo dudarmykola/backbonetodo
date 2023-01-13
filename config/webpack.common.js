@@ -24,6 +24,10 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
             }
         ]
     },
